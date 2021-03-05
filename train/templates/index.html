@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>{% block title%}Lavatech Technology {% endblock %}</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Font Awesome JS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+<style>
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+h4{
+    text-align: center;
+    padding-top:20px;
+
+}
+h5{
+    text-align: center;
+    padding-top:20px;
+
+}
+        
+{% block css %} {% endblock %}
+</style>
+</head>
+<body>
+    
+    <h4>Timings of Special Trains to be run w.e.f. 30-05-20</h4>
+    <table>
+      <tr>
+        <th>Sr. No.</th>
+        <th>train No.</th>
+        <th>From</th>
+        <th>Dep. Time</th>
+        <th>To</th>
+        <th>Arr. time</th>
+        <th>Booking</th>
+      </tr>  
+      {% for x in obj %}
+      <tr>
+      <td>{{x.id}}</td>
+      <td>{{x.train_no}}</td>
+      <td>{{x.train_from}}</td>
+      <td>{{x.dep_time}}</td>
+      <td>{{x.train_to}}</td>
+      <td>{{x.arr_time}}</td>
+      <td><a href='{% url "booking" book=x.train_no  %}' class="btn btn-outline-primary">Booking</a></td>
+      </tr>
+      {%endfor%}
+    </table>
+    
+      <script>  
+  {% if thank %}
+alert('Thanks for Reservation. We will get back to you soon!');
+document.location = "/";
+{% endif %}
+
+</script>
+  
+</body>
+
+</html>
